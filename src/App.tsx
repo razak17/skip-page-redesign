@@ -6,7 +6,7 @@ import { SkipItem } from "./components/SkipItem";
 
 const App = () => {
   const [selectedSkipId, setSelectedSkipId] = useState<number | null>(null);
-  
+
   const { isPending, error, data } = useQuery({
     queryKey: ["skips"],
     queryFn: () => getSkipsByLocation(),
@@ -22,8 +22,8 @@ const App = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
-      <h1 className="text-2xl mb-4">Choose Your Skip Size</h1>
-      <p className="mb-4 text-gray-600">
+      <h1 className="text-2xl mb-4 font-bold">Choose Your Skip Size</h1>
+      <p className="mb-8 text-gray-600">
         Select the skip size that best suits your needs
       </p>
       {isPending ? (
