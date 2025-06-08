@@ -1,4 +1,4 @@
-import { AlertTriangle, Car, Check, Watch } from "lucide-react";
+import { AlertTriangle, ArrowRight, Car, Check, Watch } from "lucide-react";
 import type { Skip } from "../api/skips";
 
 interface SkipItemProps {
@@ -17,18 +17,40 @@ export function SkipItem({ skip, isSelected, onSelect }: SkipItemProps) {
       }`}
       onClick={onSelect}
     >
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 gap-6">
         <h2 className="text-2xl font-bold text-gray-800 flex items-center">
           {skip.size} Yard Skip
         </h2>
-        {isSelected && <Check size={16} />}
+        <button
+          className={`flex-shrink-0 w-full lg:w-30 px-4 py-2 rounded-xl text-white font-semibold cursor-pointer flex items-center justify-center ${
+            isSelected
+              ? "bg-blue-500 hover:bg-blue-600"
+              : "bg-gray-300 hover:bg-gray-400"
+          }`}
+          onClick={(e) => {
+            e.stopPropagation();
+            onSelect();
+          }}
+        >
+          {isSelected ? (
+            <div className="flex gap-2 items-center">
+              Selected
+              <Check size={16} />
+            </div>
+          ) : (
+            <div className="flex gap-2 items-center">
+              Select
+              <ArrowRight size={16} />
+            </div>
+          )}
+        </button>
       </div>
 
       <div className="space-y-3">
         <div className="flex items-center text-gray-600 gap-2">
           <Watch size={16} />
           <span className="font-medium">
-            Hire Period: {skip.hire_period_days} days
+            Hire period: {skip.hire_period_days} days
           </span>
         </div>
 
