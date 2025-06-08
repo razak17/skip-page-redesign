@@ -41,6 +41,9 @@ This application is built using modern React development practices with the foll
 
 ```bash
 pnpm install
+
+mv .env.example .env
+
 pnpm run dev
 ```
 
