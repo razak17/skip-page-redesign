@@ -35,7 +35,9 @@ const App = () => {
               key={skip.id}
               skip={skip}
               isSelected={selectedSkipId === skip.id}
-              onSelect={() => setSelectedSkipId(skip.id)}
+              onSelect={() =>
+                setSelectedSkipId(selectedSkipId === skip.id ? null : skip.id)
+              }
             />
           ))}
         </div>
