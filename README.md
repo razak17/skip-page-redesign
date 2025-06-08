@@ -1,54 +1,47 @@
-# React + TypeScript + Vite
+# Skip Hire Selection App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React TypeScript application for selecting skip hire services based on location and size requirements.
 
-Currently, two official plugins are available:
+## Tech Stack & Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This application is built using modern React development practices with the following key technologies:
 
-## Expanding the ESLint configuration
+### Core Technologies
+- **React 18** with TypeScript for type-safe component development
+- **Vite** for fast development and optimized builds
+- **TanStack React Query** for server state management and caching
+- **Tailwind CSS** for utility-first styling
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Key Features
+- **Server State Management**: Uses React Query for efficient data fetching, caching, and synchronization
+- **Type Safety**: Full TypeScript implementation ensures compile-time error checking
+- **Responsive Design**: Mobile-first responsive layout using Tailwind CSS grid system
+- **Error Handling**: Comprehensive error states for network failures
+- **Loading States**: User-friendly loading indicators during data fetching
+- **Interactive Selection**: Single-select functionality for skip items
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Architecture Approach
+
+#### State Management Strategy
+- **Server State**: Managed by TanStack React Query for API data (skips list)
+- **Client State**: Local React state for UI interactions (selected skip ID)
+- **Separation of Concerns**: Clear distinction between server and client state
+
+#### Component Structure
+- **App Component**: Main container handling data fetching and layout
+- **SkipItem Component**: Reusable component for individual skip display
+- **API Layer**: Dedicated service functions for external data fetching
+
+#### Development Features
+- **Hot Module Replacement (HMR)**: Instant updates during development
+- **React Query Devtools**: Integrated debugging tools for query inspection
+- **Strict Mode**: Enhanced development warnings and checks
+
+## Getting Started
+
+```bash
+pnpm install
+pnpm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+The application fetches skip data from an external API and displays it in a responsive grid layout, allowing users to select their preferred skip size for hire.
